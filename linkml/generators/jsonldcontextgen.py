@@ -142,6 +142,8 @@ class ContextGenerator(Generator):
     def visit_slot(self, aliased_slot_name: str, slot: SlotDefinition) -> None:
         if slot.identifier:
             slot_def = "@id"
+        elif slot.designates_type:
+            slot_def = "@type"
         else:
             slot_def = {}
             if not slot.usage_slot_name:
